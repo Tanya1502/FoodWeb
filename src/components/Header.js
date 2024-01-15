@@ -1,58 +1,59 @@
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
-import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+// import CartIcon from "./Icons/CartIcon";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [btnNameReact, setBtnNameReact] = useState("Login");
-
+  const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
-
   const { loggedInUser } = useContext(UserContext);
-  console.log(loggedInUser);
-
-  const cartItems = useSelector(store => store.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="flex justify-between bg-pink-100 shadow-lg">
-      <div className="logo-container">
-        <img className="w-56" src={LOGO_URL} alt="logo" />
-      </div>
+    <div className="flex justify-between bg-green-100">
       <div className="flex items-center">
+        <img className="w-32" src={LOGO_URL} />
+      </div>
+      <div className="nav-items">
         <ul className="flex p-4 m-4">
-          <li className="px-4">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
+          <li className="px-4">onlineStatus: {onlineStatus ? "✅" : "🔴 "}</li>
           <li className="px-4">
             <Link to="/">Home</Link>
           </li>
           <li className="px-4">
-            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact us</Link>
           </li>
           <li className="px-4">
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/about">About us</Link>
           </li>
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="px-4 font-bold text-xl">
-            <Link to="/grocery">Cart - ({cartItems.length} items)</Link>
+          <li className="px-4">
+            <Link to="/cart">Cart - ({cartItems.length} items)</Link>
+            {/* <Link to="/cart" className="flex">
+              <CartIcon />({cartItems.length})
+            </Link> */}
           </li>
           <button
-            className="login"
+            className="login-btn"
             onClick={() => {
-              btnNameReact === "Login"
-                ? setBtnNameReact("Logout")
-                : setBtnNameReact("Login");
+              btnName === "Login" ? setBtnName("logout") : setBtnName("login");
             }}
           >
-            {btnNameReact}
+            {btnName}
           </button>
-          <li className="px-4 font-bold">{loggedInUser}</li>
+          <li className="px-4">
+            <Link className="font-bold" to="">
+              {loggedInUser}
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
   );
 };
-
 export default Header;

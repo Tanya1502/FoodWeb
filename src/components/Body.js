@@ -29,10 +29,10 @@ const Body = () => {
 
     // Optional Chaining
     setListOfRestaurant(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -103,8 +103,8 @@ const Body = () => {
             to={"/restaurants/" + restaurant?.info?.id}
           >
             {/** if the restaurant is promoted then add a label to it */}
-            restaurant.data.promoted ?{" "}
-            <RestaurantCardPromoted resData={restaurant} /> :{" "}
+            {/* restaurant.data.promoted ?{" "}
+            <RestaurantCardPromoted resData={restaurant} /> :{" "} */}
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}
