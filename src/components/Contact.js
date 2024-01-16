@@ -1,22 +1,34 @@
-import React from "react";
+
 
 const Contact = () => {
+
+  const formSubmit = () => {
+    alert("Thanks for contacting us. We'll get back to you soon...")
+  }
+
   return (
-    <div>
-      <h1 className="font-bold text-3xl p-4 m-4">Contact us</h1>
-      <form>
-        <input
-          type="text"
-          className="border border-black p-2 m-2"
-          placeholder="name"
-        />
-        <input
-          type="text"
-          className="border border-black p-2 m-2"
-          placeholder="message"
-        />
-        <button className="border border-black p-2 m-2">Submit</button>
-      </form>
+
+
+    <div id="contact">
+      <img src="https://images.pexels.com/photos/5946083/pexels-photo-5946083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+      <div id="overlay"></div>
+      <div id="contact-left">
+        <h1>Get In Touch</h1>
+        <p>
+          Need assistance or have a question? Contact our friendly team for
+          quick and helpful support
+        </p>
+      </div>
+
+      <div id="contact-right">
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name" />
+        <label>Email</label>
+        <input type="email" placeholder="xyz@gmail.com" />
+        <label>Tell Us More</label>
+        <textarea placeholder="Write Here..." cols="30" rows="10"></textarea>
+        <button onClick={formSubmit}>Send Message</button>
+      </div>
     </div>
   );
 };

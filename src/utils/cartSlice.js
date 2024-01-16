@@ -12,6 +12,7 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       state.items.pop();
+      
     },
     clearCart: state => {
       state.items.length = 0;
@@ -21,3 +22,6 @@ const cartSlice = createSlice({
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
+
+
+            
